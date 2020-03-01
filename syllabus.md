@@ -2,7 +2,7 @@
 
 ## Schedule
 
-### 00: Environment (1 hour)
+### 00: Environment (1-2 hours)
 
 Most of this will be at the command line. This is some short-term pain that will
 lead to long-term "impress future employers." Expect to spend about an hour
@@ -101,7 +101,7 @@ StackOverflow is a good place for curated, pre-existing questions. The
 `learnpython` subreddit it a good place to just swing by and ask a beginner
 question. And the official docs are a good place to look stuff up.
 
-### 01: Interpretive Dance (½ hour or more)
+### 01: Interpretive Dance (1-2 hours)
 
 We'll open the interpreter and do some basic things. This is just to introduce
 you to this tool and play a little in a forgiving environment. In the future,
@@ -189,9 +189,38 @@ Then add a few items:
                 print(f"Oops! {item} is not a number!")
         print(f"The total of the integers is {total}.")
 
-### 03: 
 
-## Schedule
+## 03: A Wizard's Life
+
+See the wizard sub-directory. We're going to write a simple command-line game,
+similar to the old text adventure games.
+
+We'll start with a very simple script (based on the core script, above) and then
+add one piece, then another piece, then another, and so on, until we have a
+working game.
+
+It *won't* be a fancy game, but it will expose you to some basic programming and
+it will be fun to make and (maybe) fun to play!
+
+In my experience so far, this needs about 2 hours per week minimum spent on it.
+One hour per week and too much falls back out of the brain before we pick it up
+again.
+
+More hours would be even better! But two hours seems to be sufficient to enable
+retention and not slide back.
+
+## 04: Ideas
+
+Once we have a working game, we're going to do some individual discussions of
+some computer science theory, illustrating it with the game, and using it to
+improve the game as we go.
+
+## Old Schedule (assumes a full-time CS student)
+
+I find it useful to keep a copy of this schedule for now, while I continue to
+iron out parts of the learning process. But a lot of these, I'm doing in a very
+different order. For example, exception handling is done near the very
+beginning!
 
 * Week 1: overview, introduction, creating a script
 * Week 2: variables, input and output, data types, numbers, strings
