@@ -6,6 +6,7 @@ import readline
 def main():
     readline.set_auto_history(True)
     readline.set_completer(completion)
+    readline.parse_and_bind("tab: complete")
     wiz = WizardState()
 
     while True:
