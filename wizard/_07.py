@@ -7,7 +7,7 @@ def main():
     readline.set_auto_history(True)
     readline.set_completer(completion)
     readline.parse_and_bind("tab: complete")
-    wiz = WizardState()
+    wiz = Wizard()
 
     while True:
         try:
@@ -22,7 +22,7 @@ def main():
         task(wiz, request)
 
 
-class WizardState:
+class Wizard:
     def __init__(self, location='tower', skill=0, gold=0, library=1):
         self.location = location
         self.skill = skill

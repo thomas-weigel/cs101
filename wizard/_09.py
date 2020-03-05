@@ -43,16 +43,16 @@ def load(save_file):
     if os.path.isfile(save_file):
         with open(save_file, 'r') as f:
             for line in f:
-                key, value = line.strip().split(':')
+                key, value = line.strip().split('|')
                 if key in ('skill', 'gold', 'library'):
                     value = int(value)
                 data[key] = value
 
-    wiz = WizardState(**data)
+    wiz = Wizard(**data)
     return wiz
 
 
-class WizardState:
+class Wizard:
     def __init__(self, save_file='wiz.save', location='tower', skill=0, gold=0, library=1):
         self.save_file = save_file
         self.location = location
@@ -60,21 +60,29 @@ class WizardState:
         self.gold = gold
         self.library = library
 
+        self.area = {
+            'tower': 'You travel to your modest one-story wizard tower.',
+            'village': 'You go down to the village, roughly a 100 yards from your tower.',
+            'forest': 'You head out into the wood behind your tower.',
+            }
+
     def status(self):
         print(
             f"You are at {self.location}. "
             f"Your library is rating {self.library} and skill is rating {self.skill}. "
-            f"You have {self.gold} gold coins."
+            f"You have {self.gold} gold coins. "
+            f"The price of new books is {self.library * 5}. "
             )
 
-    def task(self, request):
-        if request == self.location:
-            print(f"You are already in the {request}, silly wizard!")
+    def move(self, location):
+        if location == self.location:
+            print(f"You are already in the {location}, silly wizard!")
+        else:
+            print(self.area[location])
+            self.location = location
 
-        elif request == "tower":
-            print("You travel to your modest one-story wizard tower.")
-            self.location = "tower"
-        elif self.location == "tower" and request == "study":
+    def study(self):
+        if self.location == "tower":
             print("You study in your library.")
             wiz_max = self.library**2
             if self.skill >= wiz_max:
@@ -82,16 +90,19 @@ class WizardState:
             else:
                 self.skill += 1
                 print(f"Your magical skill is now {self.skill}.")
+        else:
+            print(f"You cannot study in the {self.location}.")
 
-        elif request == "village":
-            print("You go down to the village, roughly a 100 yards from your tower.")
-            print(f"The cost of new books is currently {self.library * 5} gold.")
-            self.location = "village"
-        elif self.location == "village" and request == "work":
+    def work(self):
+        if self.location == "village":
             print("You work magical services to the villagers. They even pay you!")
             self.gold += self.skill
             print(f"You earn {self.skill} gold and now have {self.gold} gold total.")
-        elif self.location == "village" and request == "shop":
+        else:
+            print(f"You cannot work in the {self.location}.")
+
+    def shop(self):
+        if self.location == "village":
             price = self.library * 5
             if self.gold < price:
                 print(f"You don't have enough money for books! You need {price - self.gold} more gold.")
@@ -99,11 +110,19 @@ class WizardState:
                 print(f"You spend {price} gold on new books! Books, books, books, hahahahaha!")
                 self.gold -= price
                 self.library += 1
+        else:
+            print(f"You cannot shop in the {self.location}.")
 
-        elif request == "forest":
-            print("You head out into the wood behind your tower.")
-            self.location = "forest"
-
+    def task(self, request):
+        if request in self.area:
+            self.move(request)
+            self.status()
+        elif request == "study":
+            self.study()
+        elif request == "work":
+            self.work()
+        elif request == "shop":
+            self.shop()
         elif request == "status":
             self.status()
         elif request == "help":

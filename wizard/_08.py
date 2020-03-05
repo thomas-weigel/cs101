@@ -7,7 +7,7 @@ def main():
     readline.set_auto_history(True)
     readline.set_completer(completion)
     readline.parse_and_bind("tab: complete")
-    wiz = WizardState()
+    wiz = Wizard()
 
     while True:
         try:
@@ -22,7 +22,7 @@ def main():
         wiz.task(request)
 
 
-class WizardState:
+class Wizard:
     def __init__(self, location='tower', skill=0, gold=0, library=1):
         self.location = location
         self.skill = skill
@@ -43,11 +43,15 @@ class WizardState:
             f"The price of new books is {self.library * 5}."
             )
 
-    def task(self, request):
-        if request in self.area:
-            self.move(request)
-            self.status()
-        elif self.location == "tower" and request == "study":
+    def move(self, location):
+        if location == self.location:
+            print(f"You are already in the {location}, silly wizard!")
+        else:
+            print(self.area[location])
+            self.location = location
+
+    def study(self):
+        if self.location == "tower":
             print("You study in your library.")
             wiz_max = self.library**2
             if self.skill >= wiz_max:
@@ -55,12 +59,19 @@ class WizardState:
             else:
                 self.skill += 1
                 print(f"Your magical skill is now {self.skill}.")
+        else:
+            print(f"You cannot study in the {self.location}.")
 
-        elif self.location == "village" and request == "work":
+    def work(self):
+        if self.location == "village":
             print("You work magical services to the villagers. They even pay you!")
             self.gold += self.skill
             print(f"You earn {self.skill} gold and now have {self.gold} gold total.")
-        elif self.location == "village" and request == "shop":
+        else:
+            print(f"You cannot work in the {self.location}.")
+
+    def shop(self):
+        if self.location == "village":
             price = self.library * 5
             if self.gold < price:
                 print(f"You don't have enough money for books! You need {price - self.gold} more gold.")
@@ -68,7 +79,19 @@ class WizardState:
                 print(f"You spend {price} gold on new books! Books, books, books, hahahahaha!")
                 self.gold -= price
                 self.library += 1
+        else:
+            print(f"You cannot shop in the {self.location}.")
 
+    def task(self, request):
+        if request in self.area:
+            self.move(request)
+            self.status()
+        elif request == "study":
+            self.study()
+        elif request == "work":
+            self.work()
+        elif request == "shop":
+            self.shop()
         elif request == "status":
             self.status()
         elif request == "help":
@@ -78,13 +101,6 @@ class WizardState:
             print("While in the village, you can work, shop.")
         else:
             print(f"I don't understand {request}")
-
-    def move(self, location):
-        if location == self.location:
-            print(f"You are already in the {location}, silly wizard!")
-        else:
-            print(self.area[location])
-            self.location = location
 
 
 def completion(text, state):
