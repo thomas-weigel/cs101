@@ -1,2 +1,5 @@
 .vscode/*
-wizard/wiz.save
+wiz.save
+__pycache__
+*.pyc
+*.pyo
