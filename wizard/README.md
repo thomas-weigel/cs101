@@ -207,3 +207,9 @@ See `_10.py` for an example.
 
 Make the save file process use the builtin module configparser. We do it this
 way because we don't want to manage the low level and manual way from now on.
+
+# Version Eleven
+
+See `_11.py` and `test_wizard.py` for an example.
+
+Make the game more testable, and then write a little bit of testing!
