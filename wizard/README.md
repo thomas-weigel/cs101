@@ -34,7 +34,7 @@ ingrained.
 
 # Version One
 
-See `_1.py` for an example.
+See `_01.py` for an example.
 
 Version one should be a super simple script. It should have a `__main__` clause
 and `main()` function, it should provide a command line, and it should accept
@@ -49,7 +49,7 @@ works, order of operations, etc.).
 
 # Version Two
 
-See `_2.py` for an example.
+See `_02.py` for an example.
 
 We're going to add some error handling. First, have the students `<ctrl>-D` and
 `<ctrl>-C` and see what happens to Version One. Then explain that these are
@@ -67,7 +67,7 @@ you can have them break out the task management as its own function; and the
 
 # Version Three
 
-See `_3.py` for an example.
+See `_03.py` for an example.
 
 We going to do a few things in this version, to produce something that feels a
 bit more like a real game. First, break out the task functionality into its own
@@ -88,7 +88,7 @@ they're a good way to only have to learn one thing at a time.
 
 # Version Four
 
-See `_4.py` for an example.
+See `_04.py` for an example.
 
 Now we're going to make things more complicated!
 
@@ -106,7 +106,7 @@ to make the game their own, and these impulses are an excellent first start.
 
 # Version Five
 
-See `_5.py` for an example.
+See `_05.py` for an example.
 
 Even more complications!
 
@@ -123,7 +123,7 @@ Again, students will start adding their own flourishes, and encourage that.
 
 # Version Six
 
-See `_6.py` for an example.
+See `_06.py` for an example.
 
 Discuss modules at a high level: what they are and why python uses them.
 
@@ -135,7 +135,7 @@ The goal here is to have tab-completion and up-arrow history work!
 
 # Version Seven
 
-See `_7.py` for an example.
+See `_07.py` for an example.
 
 Now we're going to build the beginnings of a class. Because so much centers
 around our wizard, we'll make a Wizard class.
@@ -165,7 +165,7 @@ the status method.
 
 # Version Eight
 
-See `_8.py` for an example.
+See `_08.py` for an example.
 
 This will be a continuation of Version Seven, above. There are multiple ways to
 do this, but the end effect should be to move each individual task into the
@@ -193,7 +193,17 @@ create, and you can spur their creativity with a few examples:
 
 # Version Nine
 
-See `_9.py` for an example.
+See `_09.py` for an example.
 
 Create a save file, and make sure the game can save and load from previous
 gameplay. At this point, it's basically a real game.
+
+We do this first version of saving the "low level" and manual way, to ensure we
+understand the basics.
+
+# Version Ten
+
+See `_10.py` for an example.
+
+Make the save file process use the builtin module configparser. We do it this
+way because we don't want to manage the low level and manual way from now on.
