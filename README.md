@@ -114,12 +114,12 @@ code before fitting them together.
     [Clang 9.0.0 (clang-900.0.39.2)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
     >>> while True:
-    ...     print("Annette, you rock!")
+    ...     print("You rock!")
     ...
-    Annette, you rock!
-    Annette, you rock!
-    Annette, you rock!
-    Annette, you rock!
+    You rock!
+    You rock!
+    You rock!
+    You rock!
     ^C
     Traceback (most recent call last):
       File "<stdin>", line 2, in <module>
@@ -139,7 +139,7 @@ through each line and discuss what it does.
     #!/usr/bin/env python3
 
     def main():
-        print("Annette, you rock!")
+        print("You rock!")
 
     if __name__ == '__main__':
         main()
@@ -148,7 +148,7 @@ Now save the file to `basic.py` and then run:
 
     $ chmod +x basic.py
     $ ./basic.py
-    Annette, you rock!
+    You rock!
     $ git add basic.py
     $ git commit --message "A script framework for future work."
 
