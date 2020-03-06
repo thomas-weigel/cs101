@@ -6,9 +6,7 @@ import readline
 
 
 def main():
-    readline.set_auto_history(True)
-    readline.set_completer(completion)
-    readline.parse_and_bind("tab: complete")
+    set_readline()
     wiz = load('wiz.save')
 
     while True:
@@ -23,6 +21,20 @@ def main():
 
         print(wiz.task(request))
         save(wiz)
+
+
+def set_readline():
+    import readline
+
+    readline.set_auto_history(True)
+    readline.set_completer(completion)
+
+    if 'libedit' in readline.__doc__:
+        readline.parse_and_bind("bind ^I rl_complete")
+        print("OS X")
+    else:
+        readline.parse_and_bind("tab: complete")
+        print("wut")
 
 
 def save(wiz):
